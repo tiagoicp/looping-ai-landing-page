@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Looping AI Design Tokens ──────────────────────── */
+    /* White background */
+    --background: 1 0 0;
+    /* Dark grey foreground #1a1a1a */
+    --foreground: 0.18 0 0;
+
+    /* Card: pure white */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0 0;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0 0;
+
+    /* Primary: deep teal */
+    --primary: 0.44 0.07 196;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary: light grey for subtle fills */
+    --secondary: 0.97 0 0;
+    --secondary-foreground: 0.18 0 0;
+
+    /* Muted: very light grey */
+    --muted: 0.97 0 0;
+    --muted-foreground: 0.5 0 0;
+
+    /* Accent: teal */
+    --accent: 0.44 0.07 196;
+    --accent-foreground: 1 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border: very light grey */
+    --border: 0.91 0 0;
+    --input: 0.91 0 0;
+    --ring: 0.44 0.07 196;
+
+    /* Looping brand colors */
+    --teal: 0.44 0.07 196;
+    --teal-light: 0.92 0.04 196;
+    --dark-bg: 0.13 0 0;
+    --dark-bg-foreground: 1 0 0;
+
+    /* Slack purple */
+    --slack-purple: 0.35 0.18 305;
+
+    --radius: 0.5rem;
+
+    /* Charts */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.18 0 0;
+    --sidebar-primary: 0.44 0.07 196;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.18 0 0;
+    --sidebar-border: 0.91 0 0;
+    --sidebar-ring: 0.44 0.07 196;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", "General Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  }
+}
+
+/* ── Utility classes ───────────────────────────────────────── */
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  }
+  .font-body {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Fade-in animation on scroll */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-in.visible {
+    opacity: 1;
+  }
+
+  /* Stagger delays */
+  .delay-100 { transition-delay: 100ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+  .delay-400 { transition-delay: 400ms; }
+  .delay-500 { transition-delay: 500ms; }
+  .delay-600 { transition-delay: 600ms; }
+}
+
+/* ── Slack button ───────────────────────────────────────────── */
+.btn-slack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: oklch(var(--slack-purple));
+  color: white;
+  font-family: "Inter", ui-sans-serif, sans-serif;
+  font-weight: 600;
+  padding: 0.625rem 1.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 3px rgba(74, 21, 75, 0.25);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-slack:hover {
+  background-color: oklch(0.29 0.18 305);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(74, 21, 75, 0.32);
+}
+.btn-slack:active {
+  transform: translateY(0);
+}
+.btn-slack:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ── Teal button ────────────────────────────────────────────── */
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: oklch(var(--teal));
+  color: white;
+  font-family: "Inter", ui-sans-serif, sans-serif;
+  font-weight: 600;
+  padding: 0.625rem 1.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-teal:hover {
+  background-color: oklch(0.38 0.08 196);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(45, 106, 106, 0.3);
+}
+.btn-teal:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ── Ghost button ───────────────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: oklch(var(--foreground));
+  font-family: "Inter", ui-sans-serif, sans-serif;
+  font-weight: 500;
+  padding: 0.625rem 1.375rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+  border: 1.5px solid oklch(var(--border));
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  background-color: oklch(var(--muted));
+  color: oklch(var(--teal));
+  border-color: oklch(var(--teal));
+}
+.btn-ghost:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ── Screenshot frame ──────────────────────────────────────── */
+.screenshot-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.10),
+    0 24px 64px rgba(0, 0, 0, 0.07);
+  border: 1px solid oklch(0.88 0 0);
+  position: relative;
+}
+.screenshot-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+/* ── Browser chrome bar ─────────────────────────────────────── */
+.browser-chrome {
+  background: oklch(0.93 0 0);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid oklch(0.87 0 0);
+  flex-shrink: 0;
+}
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.browser-chrome .url-bar {
+  flex: 1;
+  margin-left: 12px;
+  height: 20px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid oklch(0.87 0 0);
+  max-width: 280px;
+}
+
+/* ── Float animation ────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
